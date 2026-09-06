@@ -1,0 +1,31 @@
+{
+  "name": "cse341-books",
+  "version": "1.0.0",
+  "description": "book api",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "nodemon --env-file=.env server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lsonsprofile/cse341-Books.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lsonsprofile/cse341-Books/issues"
+  },
+  "homepage": "https://github.com/Lsonsprofile/cse341-Books#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.10.0",
+    "nodemon": "^3.1.14"
+  }
+}
