@@ -1,0 +1,26 @@
+Pull Request  
+https://github.com/Lsonsprofile/cse341-Books/pull/3
+
+GitHub Issue  
+https://github.com/Lsonsprofile/cse341-Books/issues/1
+
+Time-spent Reflection  
+Connecting the Express app to MongoDB and getting the /books route to return actual data took much longer than I expected. At first, the route returned an empty array even though I had inserted documents into Atlas. I later discovered that my .env file was pointing to a different database name than the one where the books collection existed.
+I also learned the importance of fully stopping and restarting the server. I even used taskkill /F /IM node.exe to terminate any stuck Node.js processes because nodemon was not picking up the changes to the .env file. After that, the route started returning the correct data.
+Through this experience, I learned to check the exact database and collection being used and to completely restart the server, including terminating old Node.js processes, whenever environment variables are changed.
+
+Walk-through Video  
+https://www.loom.com/share/40d4f164d6964325a666e57c309c7abf
+
+Sensitive Data  
+Sensitive data, such as the MongoDB connection string, is stored only in the local .env file. The .gitignore file includes .env, ensuring that it is never committed to GitHub. On Render, I set MONGODB_URI and MONGODB_DB_NAME as environment variables in the dashboard rather than storing them in the code repository. This prevents sensitive credentials from being exposed in version control.
+
+Implementation Decision  
+I kept the Express application in app.js and the server startup in server.js. This separation makes the application easier to test because I can import app into test files without starting a real server port. It also keeps the startup logic and database connection setup separate from the route definitions.
+This structure makes the application easier to debug because problems with the server startup, database connection, and application routes can be isolated more easily. It also makes the code easier to maintain and understand because each file has a specific responsibility. If I need to modify the server configuration, database connection, or routes, I can work on the appropriate part without affecting the other parts of the application. Separating these responsibilities also makes it easier to add automated tests and expand the application in the future.
+
+Repository  
+https://github.com/Lsonsprofile/cse341-Books
+
+Process Improvement  
+A process improvement I will adopt is to run a small diagnostic script that logs which database and collection the application is using. I will also use taskkill to stop all running Node.js processes before restarting the application after making changes to environment variables. These steps would help me identify configuration problems more quickly, prevent old processes from using outdated environment variables, and reduce the time and confusion I experienced during development.
