@@ -1,0 +1,34 @@
+# Week 02 Reflection
+
+## Links
+
+1. Provide your walk-through video link. This video must demonstrate your API working at Render and follow the script in the assignment.
+Video link: https://www.tella.tv/video/api-swagger-crud-walkthrough-hh02
+
+2. Provide a link to your deployed Render api-docs URL:
+Render link: https://cse341-books-uutj.onrender.com/api-docs/#/
+
+3. Provide links to your Pull Requests (they should be merged at this point):
+Books PR: https://github.com/Lsonsprofile/cse341-Books/pull/6
+Authors PR: https://github.com/Lsonsprofile/cse341-Books/pull/5
+
+4. Provide links to your GitHub Issues (they should be closed at this point).
+Books Issue: https://github.com/Lsonsprofile/cse341-Books/issues/7
+Authors Issue: https://github.com/Lsonsprofile/cse341-Books/issues/8
+
+## Plan vs. Implementation
+
+5. Which part of the work took more or less time than expected? Why?
+Adding the author WRITE routes took more time than I expected. When I tried to create or update data in my database, the request failed with a 500 error. I had to figure out why I was unable to write to the database. I checked the server terminal logs and found the real error: my MongoDB user only had read permissions. After I changed the user role in Atlas to "Read and write to any database," the write routes worked. I learned that a 500 error can come from a database permissions problem, not just a bug in my code.
+
+Answer:
+
+6. Answer: How did Swagger help you in your work this week?
+Swagger let me test every route (GET, POST, PUT, DELETE) right in the browser. When a route failed, I could see which one it was and what response it returned. For example, when POST /authors returned a 500, Swagger showed me exactly which route was failing so I could check the server logs and fix the problem.
+
+
+## Week 03 Improvement
+
+7. What is one specific habit or process you will apply next week?
+
+Answer:  A habit I will apply next week is to check the server terminal logs whenever a route returns a 500. The response body hides internal details for security, but the terminal shows the real error. When my write route failed due to a MongoDB permissions issue, the terminal message told me exactly what was wrong. I will also make sure to restart the server fully after changing environment variables or database settings.
